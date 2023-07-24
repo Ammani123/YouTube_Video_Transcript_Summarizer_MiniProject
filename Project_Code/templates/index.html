@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>YouTube Transcript Summary and Translation</title>
+    <style>
+        body {
+            background-color: rgb(5, 37, 67) !important;
+            font-family: Arial, sans-serif;
+            color: rgb(215, 222, 228);
+        }
+
+        h1 {
+            color: #ac1a1a;
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            width: 400px;
+            padding: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
+
+        .summary-title {
+            color:chocolate;
+            margin-top: 20px;
+        }
+
+        .summary-text {
+            padding: 10px;
+        }
+
+        .translated-summary-title {
+            color:chocolate;
+            margin-top: 20px;
+        }
+
+        .translated-summary-text {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <marquee width="90%" direction="left" height="100px">
+        <h1><b>YOUTUBE VIDEO TRANSCRIPT SUMMARIZER </b></h1>
+        </marquee>
+    <form method="post">
+        <label for="youtube_url">Enter YouTube Video URL:</label><br>
+        <input type="text" id="youtube_url" name="youtube_url" placeholder="Enter video URL" required><br><br>
+        <input type="submit" value="Get Summary and Translate">
+    </form>
+
+    {% if error_message %}
+    <p class="error">{{ error_message }}</p>
+    {% endif %}
+
+    {% if transcript %}
+    <h2 class="summary-title">Transcript Summary</h2>
+    <p class="summary-text">{{ transcript }}</p>
+    {% if translated_summary %}
+    <h2 class="translated-summary-title">Translated Summary (Telugu):</h2>
+    <p class="translated-summary-text">{{ translated_summary }}</p>
+    {% endif %}
+    {% endif %}
+</body>
+
+</html>
